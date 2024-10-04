@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Tecnología Chilena</title>
+    <title>Soluciones Digitales | e-certchile</title>
     <meta charset="UTF-8">
     <link href="img/favicon.png" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="css/main.css?v=19449" rel="stylesheet" type="text/css">
-    <script src="js/main.js?v=19449" type="text/javascript"></script>
+    <link href="css/main.css?v=28631" rel="stylesheet" type="text/css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css" rel="stylesheet">
+    <script src="js/main.js?v=28631" type="text/javascript"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js"></script>
     <!-- Meta tags facebook-->
     <meta property="og:title" content="#">
     <meta property="og:description" content="#">
@@ -17,14 +19,53 @@
     <meta name="twitter:description" content="#">
     <meta name="twitter:image" content="#"><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <!--mapbox-->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js"></script>
+    <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+    <script>
+      var URL_SITE = "http://54.156.114.186/";
+      var URL_API_PE = "https://certificacion2.ecertchile.cl/";
+      
+    </script>
   </head>
   <body>
     <header>
       <div class="header__primary">
         <div class="header__wrap">
           <div class="header__inner">
-            <div class="header__logo"><a href="index.html"><img src="img/icons/logo-chiletec.jpeg"></a></div>
+            <div class="header__left">
+              <div class="header__actions">
+                <div class="header__nav">
+                  <ul> 
+                    <li><a href="#">Portal Empresa</a></li>
+                    <li><a href="#">Grup</a></li>
+                    <li><a href="#">Firma Documento Online</a></li>
+                    <li><a href="#">Verificar firma</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="header__right">
+              <div class="header__search">
+                <form action="search.html" method="get">
+                  <input type="text" name="s" placeholder="Buscar producto">
+                  <button><span class="fa fa-search"></span></button>
+                </form>
+              </div>
+              <div class="header__item header__item--search--mobile"><span class="fa fa-search"></span></div>
+              <div class="header__item"> 
+                <div class="header__buttons"> <a data-modal-register class="btn btn--xs btn--transparent">Regístrate</a><a data-modal-login class="btn btn--xs">Ingresar</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header__secondary">
+        <div class="header__wrap">
+          <div class="header__inner">
+            <div class="header__logo"><a href="index.html"><img src="img/icons/logo-ecert.png"></a></div>
             <div class="header__nav">
               <div class="header__nav__bg"></div>
               <div class="header__nav__nav">
@@ -37,111 +78,1133 @@
                   <div></div>
                   <div></div>
                 </div>
-                <nav>
-                  <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Quienes Somos</a></li>
-                    <li><a href="#">Casos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                  </ul>
-                </nav>
+                <div class="header__menu">
+                  <nav>
+                    <ul>
+                      <li class="header__nav__li header__nav__li--digtrans"><a href="#">Productos</a>
+                        <div class="header__nav__submenu">
+                          <div class="header__nav__submenu__relative">
+                            <div class="header__nav__submenu__image"> <img src="img/icons/eff-4-opacity.svg"></div>
+                            <div class="header__nav__submenu__header"> 
+                              <h4>Soluciones </h4>
+                              <p>Nos adaptamos al tamaño y formato de tu empresa</p>
+                            </div>
+                            <div class="header__nav__submenu__body"> 
+                              <ul> 
+                                <li> <a href="single-product.html">Certificado Digital</a>
+                                  <p>Certificado Digital para el SII</p>
+                                </li>
+                                <li><a href="personas.html">Personas</a>
+                                  <p>Certificado Digital y Firma Avanzada</p>
+                                </li>
+                                <li class="last"><a href="empresas.html">Empresas</a>
+                                  <p>Pymes y Corporativo</p>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li><a href="alliances.html">Soluciones corporativas</a></li>
+                      <li> <a href="#">Ayuda</a>
+                        <div class="header__nav__submenu">
+                          <div class="header__nav__submenu__relative">
+                            <div class="header__nav__submenu__image"> <img src="img/icons/eff-4-opacity.svg"></div>
+                            <div class="header__nav__submenu__header"> 
+                              <h4>Ayuda </h4>
+                              <p>Neque integer curae eleifend lacus aliquam ullamcorper
+                              </p>
+                            </div>
+                            <div class="header__nav__submenu__body"> 
+                              <ul> 
+                                <li> <a href="faq.html">Preguntas frecuentes</a>
+                                  <p>Nisi egestas sollicitudin litora
+                                  </p>
+                                </li>
+                                <li><a href="tools.html">Herramientas</a>
+                                  <p>Suscipit diam vehicula bibendum
+                                  </p>
+                                </li>
+                                <li class="last"><a href="tutoriales.html">Tutoriales</a>
+                                  <p>Ut ut tortor diam
+                                  </p>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <!--li: a(href="https://api.ecertchile.cl/WebSignValidator/public/signature-validator") Validar firmas-->
+                      <li><a href="#">Nosotros</a>
+                        <div class="header__nav__submenu">
+                          <div class="header__nav__submenu__relative">
+                            <div class="header__nav__submenu__image"> <img src="img/icons/eff-4-opacity.svg"></div>
+                            <div class="header__nav__submenu__header"> 
+                              <h4>Mas </h4>
+                              <p>Creamos confianza</p>
+                            </div>
+                            <div class="header__nav__submenu__body"> 
+                              <ul> 
+                                <li> <a href="aboutus.html">Quiénes somos</a>
+                                  <p>In conubia tortor eleifend vivamus ad
+                                  </p>
+                                </li>
+                                <li><a href="news.html">Blog</a>
+                                  <p>Pharetra purus eros per porta mollis primis
+                                  </p>
+                                </li>
+                                <li class="last"><a href="red-atencion.html">Red de Atención</a>
+                                  <p>Arcu eget quisque tempus malesuada
+                                  </p>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="header__nav__button"><a href="contact.html">Soporte y Ayuda</a></li>
+                      <li class="header__nav__button"><a href="contact.html">Partners</a></li>
+                      <li class="header__nav__button"><a href="contact.html">Noticias</a></li>
+                      <li class="header__nav__button"><a href="contact.html" class="btn">Hablemos</a></li>
+                    </ul>
+                  </nav>
+                  <div class="header__cart"><a href="cart-1.html"> <img src="img/icons/cart2-svgrepo-com.svg" alt=""><span class="header__cart__cant">3</span></a></div>
+                </div>
               </div>
             </div>
-            <div class="header__right">
-              <div class="header__search"><span class="fa fa-search"></span></div>
-              <div class="header__socials">
-                <nav>
-                  <ul>
-                    <li><a href="index.html"><span class="fa fa-facebook"></span></a></li>
-                    <li><a href="index.html"><span class="fa fa-instagram"></span></a></li>
-                    <li><a href="index.html"><span class="fa fa-linkedin"></span></a></li>
-                  </ul>
-                </nav>
+            <div class="header__nav__mobile">
+              <div class="header__nav__opacity"> </div>
+              <div class="header__nav__nav"> 
+                <div class="header__nav__nav__header"> 
+                  <div class="header__nav__isotipo"> <img src="img/icons/logo-ecert.png"></div>
+                  <div class="header__nav__close">
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div class="header__nav__back">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+                <div class="header__nav__nav__body">
+                  <div class="header__nav__nav__menu"> 
+                    <ul> 
+                      <li><a href="#">Soluciones</a>
+                        <ul>
+                          <li class="header__nav__title">Soluciones</li>
+                          <li><a href="single-product.html">Certificado digital</a></li>
+                          <li><a href="personas.html">Personas</a></li>
+                          <li><a href="empresas.html">Empresas</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="alliances.html">Alianzas</a></li>
+                      <li><a href="#">Ayuda</a>
+                        <ul>
+                          <li class="header__nav__title">Ayuda</li>
+                          <li><a href="faq.html">Preguntas Frecuentas</a></li>
+                          <li><a href="tools.html">Herramientas</a></li>
+                          <li><a href="tutoriales.html">Tutoriales</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Más</a>
+                        <ul>
+                          <li class="header__nav__title">Más</li>
+                          <li><a href="aboutus.html">Quienes Somos</a></li>
+                          <li><a href="news.html">Blog</a></li>
+                          <li><a href="red-atencion.html">Red de Atención</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="contact.html">Hablemos</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="header__nav__nav__body header__nav__nav__body--light">
+                  <h4>Links de interés</h4>
+                  <div class="header__nav__nav__menu"> 
+                    <ul> 
+                      <li><a href="#">Portal Empresa</a></li>
+                      <li><a href="#">Grup</a></li>
+                      <li><a href="#">Firma Documento Online</a></li>
+                      <li><a href="#">Verificar firma</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="header__nav__nav__footer"> 
+                  <div class="header__nav__buttons"><a data-modal-register class="btn btn--xs btn--white">Regístrate</a><a data-modal-login class="btn btn--xs">Ingresar</a></div>
+                </div>
               </div>
+            </div>
+            <div class="header__item header__item--ham">
+              <div class="header__ham"><span></span><span></span><span></span></div>
             </div>
           </div>
         </div>
       </div>
     </header>
     <div id="sections">
-      <section class="section--main">
-        <div class="section__wrap">
-          <div class="section__body"><span class="section__date">16/09/2022</span>
-            <h3 class="section__title">Interior Noticias</h3>
-            <p class="section__description">Arcu tempus varius praesent congue ut per aliquam faucibus ut. Libero per urna luctus himenaeos vulputate quam aliquam feugiat dui. Porttitor faucibus eros quis vehicula magna habitasse tortor inceptos rutrum ut egestas purus facilisis arcu sed eleifend at dictum tempor.
-            </p>
-          </div>
-        </div>
-        <div class="section__bg">       
-          <div class="bg"> <img src="http://placeimg.com/500/100/any?v=92" width="640" height="480"/>
-          </div>
-        </div>
-      </section>
-      <section class="section--news">
-        <div class="section__wrap"> 
-          <div class="section__body"> 
-            <p class="section__content">Ultrices cursus diam nostra nam suscipit massa lobortis aliquet tempus. Accumsan luctus ullamcorper praesent facilisis fames integer euismod convallis nec. Vestibulum tellus nisi vitae orci nec enim porttitor suspendisse blandit. At a etiam justo platea urna sed conubia auctor scelerisque. Venenatis hac facilisis curabitur taciti posuere primis dictum tellus nulla. Posuere quis taciti cras arcu nunc et mauris cubilia eu. Tellus gravida etiam porta placerat iaculis nostra eleifend mauris vivamus. Netus ornare etiam quis curae hac vel dui quisque fames. Torquent dictumst justo molestie egestas tempor quisque ante posuere venenatis. Nisi arcu fermentum maecenas sed hac nibh dictum aptent sapien. Commodo cursus duis faucibus lacinia erat velit lacinia tempor luctus. Vulputate pharetra fames platea ante orci potenti non elit duis. Turpis feugiat nunc himenaeos auctor fames rhoncus mattis tempus sollicitudin. Cras mauris rhoncus senectus convallis aenean vehicula urna feugiat porttitor. Rhoncus quam consectetur justo sociosqu eleifend risus velit hendrerit fermentum. Cubilia curae nam nullam dui nulla fermentum massa erat etiam. Scelerisque suscipit tristique ad augue iaculis leo ac aliquam class. Interdum pharetra nibh vel primis hac tempor molestie conubia eros. Potenti vestibulum urna accumsan tristique egestas sem orci habitant aliquam metus ante suscipit gravida etiam vel nec congue tellus nulla.
-            </p>
-            <div class="section__image"> <img src="http://placeimg.com/500/200/any?v=46" width="640" height="480"/>
+      <section class="section--newsall section--light">
+        <div class="section__wrap section__wrap--sm">
+          <div class="section__header">
+            <div class="section__breadcrumb"><a href="index.html">Inicio<span class="fa fa-angle-right"></span></a><a href="news.html" class="current">Noticias<span class="fa fa-angle-right"></span></a></div>
+            <div class="section__content"> 
+              <h1 class="h2 section__title">Noticias</h1>
+              <p class="section__description">La Firma Digital es el recurso que necesitas para realizar trámites rápidos y de manera segura. Esto es lo que debes saber para disfrutar de sus beneficios.</p>
             </div>
-            <div class="section__socials">  
-              <nav>
-                <ul>
-                  <li><a href="index.html"><span class="fa fa-facebook"></span></a></li>
-                  <li><a href="index.html"><span class="fa fa-instagram"></span></a></li>
-                  <li><a href="index.html"><span class="fa fa-linkedin"></span></a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section--contact">
-        <div class="section__bg"> 
-          <div class="bg"> <img src="img/upload/"></div>
-        </div>
-        <div class="section__wrap">
-          <div class="section__body">
-            <h3 class="section__title">Quieres destacar tu producto  </h3>
-            <p class="section__description">Hendrerit nam senectus turpis ut sem orci donec litora elit colus nisi ultricies maecenas non a cras mi mollis litora.
-            </p><a href="#" class="btn">Comunicate con nosotros </a>
-          </div>
-        </div>
-      </section>
-    </div>
-    <footer>
-      <div class="footer__wrap">
-        <div class="cols">
-          <div class="col-xs-6 col-md-2">
-            <div class="footer__logo"><a href="#"><img src="img/cropped-Logo-Tec-Chilena-e1648473582221.jpeg"></a></div>
-            <p class="footer__description">Placerat lacinia arcu egestas scelerisque fames sodales nullam nisl aliquam nisi feugiat pretium litora senectus nullam torquent inceptos diam vehicula.
-            </p>
-          </div>
-          <div class="col-xs-6 col-md-2">
-            <div class="footer__links">
-              <ul>
-                <li><a href="#">Ayuda</a></li>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Quienes Somos</a></li>
-                <li><a href="#">Casos</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xs-12 col-md-8">
-            <div class="footer__info">
-              <div class="footer__socials">
-                <ul>
-                  <li> <a href="#"><span class="fa fa-phone">+56 9 8484 4444</span></a></li>
-                  <li> <a href="#"><span class="fa fa-envelope-o">contacto@tecnologiachilena.cl</span></a></li>
-                  <li> <a href="#"><span class="fa fa-map-marker">Av providencia • SANTIAGO • CHILE</span></a></li>
+            <div class="section__header__flex">
+              <div class="section__filters filters">
+                <ul data-filter-group="category" class="menu button-group">
+                  <li data-filter="*" class="section__filter current">Todas</li>
+                  <li data-filter=".1" class="section__filter">Empresas</li>
+                  <li data-filter=".2" class="section__filter">Legal</li>
+                  <li data-filter=".3" class="section__filter">Actualidad</li>
+                  <li data-filter=".4" class="section__filter">Pymes</li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="footer__copyright">
-              <div class="footer__description">Copyright © 2021 - Tecnología Chilena</div>
+          <div class="section__body">
+            <div class="cols cols-gutter-2 grid">
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new">
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Nulla malesuada leo nec habitasse volutpat bibendum posuere condimentum mauris a nostra.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Adipiscing gravida per ullamcorper fermentum eget luctus hac suscipit est tristique sollicitudin.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Elit nunc fermentum primis ad lacinia metus lobortis vitae senectus lacinia mattis.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Felis varius a leo ad sollicitudin dictumst dapibus est litora ante vivamus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Metus pellentesque suscipit erat dictumst venenatis sociosqu tristique luctus fringilla nam phasellus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Velit sem volutpat duis nulla aliquam euismod vestibulum ligula eros ante pulvinar.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Blandit ligula interdum nunc non massa etiam varius pulvinar varius habitasse lectus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Habitasse feugiat mi ac urna fringilla posuere quisque urna blandit etiam netus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Magna eu sollicitudin justo orci integer fermentum nunc duis curabitur fames eget.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Vivamus suspendisse maecenas molestie donec rutrum vel interdum malesuada fusce urna malesuada.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">A tellus sed viverra vestibulum tempus donec est purus imperdiet potenti sodales.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Lectus donec vestibulum fringilla integer litora volutpat dui habitasse rutrum neque ornare.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Quisque curabitur praesent etiam ante sodales sodales ornare phasellus et commodo ante.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Fringilla in vel ad purus vestibulum mollis blandit ornare viverra neque diam.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Rutrum feugiat condimentum lobortis convallis senectus aenean consequat donec massa cursus risus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Justo purus tortor sem a dictumst aenean litora morbi nibh cubilia elit.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Turpis pellentesque euismod lobortis phasellus morbi porta neque ullamcorper felis nulla platea.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Torquent at orci neque mauris fusce eros suscipit nibh nibh auctor egestas.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Consequat mattis vel lobortis ut facilisis cubilia ac mollis luctus lobortis nibh.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Condimentum quisque neque ante sem in congue taciti enim auctor volutpat justo.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Tempor gravida neque primis curabitur in tristique id elit dictumst pellentesque tempus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Tempor porttitor justo erat a semper condimentum taciti imperdiet donec aliquam inceptos.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Ultrices primis pulvinar dictum porta fermentum rhoncus vestibulum volutpat quisque est nec.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Nibh cubilia nullam curabitur donec egestas class nibh rhoncus scelerisque praesent habitasse.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Semper enim sapien nullam quam sollicitudin pulvinar platea curabitur etiam non dui.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Tellus enim nulla tristique orci fusce cursus nostra aptent aptent sociosqu vitae.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Viverra proin pretium in ante class ultricies dapibus turpis posuere laoreet netus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Gravida nibh blandit morbi per odio aenean urna tincidunt et aliquet maecenas.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Netus augue euismod ad metus litora sem scelerisque neque litora iaculis sodales.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Etiam faucibus inceptos eget eros ullamcorper fames colus aliquam sem cursus vulputate.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Nisl urna mollis mi neque orci justo hendrerit mollis phasellus tristique porta.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Class platea lectus mollis scelerisque cursus per sollicitudin platea diam duis ac.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Laoreet quisque vivamus nisl conubia imperdiet integer eros massa posuere pellentesque condimentum.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Diam praesent semper mi etiam ultrices etiam fusce ut neque tincidunt lobortis.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 1">
+                <article class="article--new"> 
+                  <div class="article__tag">Empresas</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Eros enim in colus hac curae neque velit potenti dictumst luctus phasellus.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 2">
+                <article class="article--new"> 
+                  <div class="article__tag">Legal</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-2.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Accumsan phasellus sapien auctor posuere litora blandit turpis magna consectetur primis nam.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 3">
+                <article class="article--new"> 
+                  <div class="article__tag">Actualidad</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-3.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Nibh habitant egestas ligula eget quisque curabitur viverra tincidunt magna lobortis per.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right">               </span></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-box col-sm-6 col-md-3 4">
+                <article class="article--new"> 
+                  <div class="article__tag">Pymes</div>
+                  <div class="article__bg"> 
+                    <div class="bg"> <img src="img/uploads/new-1.jpeg"></div>
+                  </div>
+                  <div class="article__body">
+                    <div class="article__date">19/11/2022</div>
+                    <h4 class="article__title">Título noticia </h4>
+                    <p class="article__description">Nibh bibendum nam facilisis eleifend viverra litora ullamcorper mi tortor vehicula adipiscing.
+                    </p><a href="single-new.html" class="btn btn--sm btn--terciary">Ver más <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </article>
+              </div>
             </div>
+          </div>
+          <div class="section__footer"> 
+            <button id="load-more" data-news-more class="btn btn--sm btn--terciary">Ver más<span class="fa fa-plus"></span></button>
+          </div>
+        </div>
+      </section>
+      <div class="addcart"> 
+        <div class="addcart__opacity"></div>
+        <div class="addcart__box">
+          <div class="addcart__close"> <img src="img/icons/close-addcart.png"></div>
+          <div class="addcart__loader"></div>
+          <div class="addcart__box__box">
+            <div class="addcart__box__header"> 
+              <h3 class="addcart__title">Agregar nuevo producto </h3>
+              <p class="addcart__description">Ac phasellus ac risus eros nisi arcu facilisis libero duis et colus sodales ligula proin.
+              </p>
+            </div>
+            <div class="addcart__box__body">
+              <div class="addcart__box__body__flow show">
+                <div class="addcart__box__details"> 
+                  <!--.addcart__box__detail
+                  h5.addcart__box__detail__title <strong>Paso 1:</strong> Selecciona el tipo de producto
+                  p.addcart__box__detail__selected Firma Electrónica Avanzada
+                  	span.fa.fa-check
+                  
+                  -->
+                  <!--.addcart__box__detail
+                  h5.addcart__box__detail__title <strong>Paso 2:</strong> Modalidad de Firma
+                  p.addcart__box__detail__selected Token
+                  	span.fa.fa-check
+                  
+                  -->
+                  <!--.addcart__box__detail
+                  h5.addcart__box__detail__title <strong>Paso 3:</strong> Vigencia
+                  p.addcart__box__detail__selected 2 Años
+                  	span.fa.fa-check
+                  
+                  -->
+                </div>
+                <div class="addcart__question"> 
+                  <div class="addcart__question__header">
+                    <h4 class="addcart__title"><strong></strong></h4>
+                    <h4 class="addcart__title"><span></span></h4>
+                    <div class="addcart__tooltip">
+                      <div class="addcart__circle"><span>?</span></div>
+                      <div class="addcart__tooltip__tooltip">
+                        <h5>Conubia eu
+                        </h5>
+                        <p>Cubilia senectus tempus porta dapibus colus est auctor erat auctor. Lacinia sagittis imperdiet vel massa praesent mattis consectetur felis risus quam lacus fusce aenean phasellus.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addcart__question__body">
+                    <div special_form="false" class="addcart__options"></div>
+                  </div>
+                  <div class="addcart__question__footer">
+                    <div class="addcart__alert"><span class="fa fa-exclamation-triangle"></span>
+                      <div class="addcart__alert__content"></div>
+                    </div>
+                    <div class="addcart__question__footer__buttons"><a data-prev-question class="btn btn--primary--white btn--hidden">Volver a paso anterior</a><a data-next-question class="btn">Continuar</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="addcart__box__body__results"> 
+                <div class="addcart__box__body__results__header">
+                  <h4 class="addcart__subtitle">Tu producto ya se encuentra listo</h4>
+                </div>
+                <div class="addcart__box__body__results__body">
+                  <div class="addcart__product">
+                    <div class="addcart__body">
+                      <div class="addcart__body__top">
+                        <h4 class="addcart__title"></h4><span class="addcart__product__price"></span>
+                      </div>
+                      <div class="addcart__details"></div>
+                      <div class="addcart__prices"> 
+                        <div class="addcart__price__subtotal"><span class="addcart__price__title">Subtotal (Sin IVA)</span><span class="addcart__price__price">$14.500</span></div>
+                        <div class="addcart__price__total"><span class="addcart__price__title">Total</span><span class="addcart__price__price"> </span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="addcart__box__body__results__footer"> 
+                  <div class="addcart__buttons"> <a data-add-cart class="btn">Agregar al carrito</a><a data-restart-questions class="btn btn--primary--white">Volver a iniciar</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal modal--login">
+        <div class="modal__back"></div>
+        <div class="modal__front">
+          <div class="modal__box">
+            <div class="modal__close"><span class="fa fa-close"></span></div>
+            <div class="modal__header">
+              <h3 class="modal__title">Iniciar sesión</h3>
+              <p class="section__description">Quam arcu lobortis feugiat erat cras litora volutpat
+              </p>
+            </div>
+            <div class="modal__body">
+              <div class="modal__tab"> 
+                <div class="tabs tabs--login">
+                  <div class="tabs__header"> 
+                    <div class="tab tab--current">Persona natural</div>
+                    <div class="tab">Contador </div>
+                  </div>
+                  <div class="tabs__body"> 
+                    <div class="tab tab--current dscroll">
+                      <div class="modal__form">
+                        <form>
+                          <div class="cols"> 
+                            <div class="col-xs-12">
+                              <div class="form__element">
+                                <div class="form__title">Rut</div>
+                                <div class="form__input">
+                                  <input type="rut" name="#" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12">
+                              <div class="form__element">
+                                <div class="form__title">Contraseña</div>
+                                <div class="form__input">
+                                  <input type="password" name="#" required>
+                                </div>
+                                <div class="form__resetpass"> <a data-modal-resetpass>¿Has olvidado la contraseña?</a></div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12">
+                              <div class="form__buttons">
+                                <button class="btn">Iniciar sesión</button><a data-modal-register class="btn btn--white">Crea tu cuenta</a>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab dscroll">
+                      <div class="modal__form">
+                        <form>
+                          <div class="cols"> 
+                            <div class="col-xs-12">
+                              <div class="form__element">
+                                <div class="form__title">Email</div>
+                                <div class="form__input">
+                                  <input type="email" name="#" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12">
+                              <div class="form__element">
+                                <div class="form__title">Contraseña</div>
+                                <div class="form__input">
+                                  <input type="password" name="#" required>
+                                </div>
+                                <div class="form__resetpass"> <a data-modal-resetpass>¿Has olvidado la contraseña?</a></div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12">
+                              <div class="form__buttons">
+                                <button class="btn">Iniciar sesión</button><a data-modal-register class="btn btn--white">Crea tu cuenta</a>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal modal--register">
+        <div class="modal__back"></div>
+        <div class="modal__front">
+          <div class="modal__box">
+            <div class="modal__close"><span class="fa fa-close"></span></div>
+            <div class="modal__header">
+              <h3 class="modal__title">Registro</h3>
+              <p class="section__description">Taciti dictum ut tortor pellentesque nisl placerat vitae
+              </p>
+            </div>
+            <div class="modal__body">
+              <div class="modal__form">
+                <form>
+                  <div class="cols">
+                    <div class="col-xs-12">
+                      <div class="form__options"> 
+                        <div class="form__option"> 
+                          <label>
+                            <input type="radio" name="profile">Persona natural
+                          </label>
+                        </div>
+                        <div class="form__option"> 
+                          <label>
+                            <input type="radio" name="profile">Contador
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form__element">
+                        <div class="form__title">Rut</div>
+                        <div class="form__input">
+                          <input type="rut" name="#" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form__element">
+                        <div class="form__title">Email</div>
+                        <div class="form__input">
+                          <input type="rut" name="#" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form__element">
+                        <div class="form__title">Contraseña</div>
+                        <div class="form__input">
+                          <input type="password" name="#" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form__element">
+                        <div class="form__title">Repetir Contraseña</div>
+                        <div class="form__input">
+                          <input type="password" name="#" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form__buttons">
+                        <button class="btn">Registrarse</button><a data-modal-login class="btn btn--white">Iniciar sesión</a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal modal--resetpass">
+        <div class="modal__back"></div>
+        <div class="modal__front">
+          <div class="modal__box">
+            <div class="modal__close"><span class="fa fa-close"></span></div>
+            <div class="modal__header">
+              <h3 class="modal__title">Recuperar contraseña</h3>
+              <p class="section__description">Colus eleifend tellus velit aliquam eget faucibus at
+              </p>
+            </div>
+            <div class="modal__body">
+              <div class="modal__form">
+                <form>
+                  <div class="cols"> 
+                    <div class="col-xs-12">
+                      <div class="form__element">
+                        <div class="form__title">Email</div>
+                        <div class="form__input">
+                          <input type="email" name="#" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form__buttons">
+                        <button class="btn">Recuperar</button><a data-modal-login class="btn btn--white">Iniciar sesión</a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup popup--confirmation">
+        <div class="popup__bar"> <img src="img/icons/line-colors.svg"></div>
+        <div class="popup__close"><span class="fa fa-close"></span></div>
+        <div class="popup__body">
+          <div class="popup__icon"><img src="img/icons/icon-check.svg"></div>
+          <div class="popup__text">Producto agregado al carro de compras</div>
+        </div>
+      </div>
+      <div class="popup popup--error">
+        <div class="popup__bar"> <img src="img/icons/line-colors.svg"></div>
+        <div class="popup__close"><span class="fa fa-close"></span></div>
+        <div class="popup__body">
+          <div class="popup__icon"><img src="img/icons/icon-error.svg"></div>
+          <div class="popup__text">Ha ocurrido un error</div>
+        </div>
+      </div>
+      <div class="popup popup--alert">
+        <div class="popup__bar"> <img src="img/icons/line-colors.svg"></div>
+        <div class="popup__close"><span class="fa fa-close"></span></div>
+        <div class="popup__body">
+          <div class="popup__icon"><img src="img/icons/icon-alert.svg"></div>
+          <div class="popup__text">esto es una alerta</div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer__wrap">
+        <div class="footer__primary">
+          <div class="footer__top">
+            <div class="cols">
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__logo"><a href="#"><img src="img/icons/logo-ecert-white.svg"></a></div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__info"> 
+                  <div class="footer__icon"> <img src="img/icons/phone.png"></div>
+                  <div class="footer__info__content"> 
+                    <p class="footer__description">Atención Comercial y Soporte Técnico </p><span class="footer__value">600 3620 400</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__info"> 
+                  <div class="footer__icon"> <img src="img/icons/whatsapp.png"></div>
+                  <div class="footer__info__content"> 
+                    <p class="footer__description">Escríbenos por Whatsapp</p><span class="footer__value">(+56 2) 3340 7500</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__info"> 
+                  <div class="footer__button"><a href="contact.html" class="btn btn--secondary">Hablemos<img src="img/icons/icon-contact.png"></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__center">
+            <div class="cols">
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__links">
+                  <h4 class="footer__title">E-CERTCHILE</h4>
+                  <ul>
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">Blog de Noticias</a></li>
+                    <li><a href="#">Verificación y Ayuda</a></li>
+                    <li><a href="#">Firmas Electrónicas</a></li>
+                    <li><a href="#">Empresa Digital</a></li>
+                    <li><a href="#">Convenios</a></li>
+                    <li><a href="#">Red de Atención</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__links">
+                  <h4 class="footer__title">Personas</h4>
+                  <ul>
+                    <li><a href="#">Beneficios</a></li>
+                    <li><a href="#">Firma Electrónica</a></li>
+                    <li><a href="#">Firma de Documentos Online</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__links">
+                  <h4 class="footer__title">PYMES</h4>
+                  <ul>
+                    <li><a href="#">Beneficios</a></li>
+                    <li><a href="#">Firma Electrónica</a></li>
+                    <li><a href="#">Grup</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="footer__links">
+                  <h4 class="footer__title">Empresas</h4>
+                  <ul>
+                    <li><a href="#">Plataforma de Servicios</a></li>
+                    <li><a href="#">Portal Empresas</a></li>
+                    <li><a href="#">Soluciones</a></li>
+                    <li><a href="#">Casos de Éxito</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__secondary">
+          <div class="footer__bottom">
+            <div class="footer__flex">
+              <div class="footer__socials"> 
+                <div class="footer__social"> <a href="#"><span class="fa fa-linkedin"></span></a></div>
+                <div class="footer__social"> <a href="#"><span class="fa fa-facebook"></span></a></div>
+                <div class="footer__social"> <a href="#"><span class="fa fa-youtube"></span></a></div>
+                <div class="footer__social"> <a href="#"><span class="fa fa-instagram"></span></a></div>
+              </div>
+              <div class="footer__certifications">
+                <div class="footer__certification"> <img src="img/icons/SELLO_REL_azul.png"></div>
+                <div class="footer__certification"> <img src="img/icons/certification-1.png"></div>
+                <div class="footer__certification"> <img src="img/icons/certification-2.png"></div>
+                <div class="footer__certification"> <img src="img/icons/certification-3.png"></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__copyright"> 
+            <p class="footer__description">Políticas y Prácticas - Politíca General de Seguridad - Política de Calidad.</p>
           </div>
         </div>
       </div>
